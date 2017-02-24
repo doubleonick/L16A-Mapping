@@ -34,20 +34,50 @@ def Create_Position_Markers(sim):
 
 	currentID = 4
 
-	for x in np.arange(18.7*c.sf,378.701*c.sf,30*c.sf):
+	for x in np.arange( c.startX , c.endX+0.001 , c.spacingX ):
 
-		for y in np.arange(18.5*c.sf,228.501*c.sf,30*c.sf):
+		for y in np.arange( c.startY , c.endY + 0.001 , c.spacingY ):
 
 			sim.Send_Cylinder(objectID=currentID, x=x, y=y, z=c.wallWidth/2, length=0.0, radius=c.wallWidth/2)
 
 			currentID = currentID + 1	
 
+def Create_Robot_At(sim,x,y,theta):
+
+	currentID = 4
+
+	# Main body
+	sim.Send_Cylinder(objectID=currentID,x=x,y=y,z=c.bodyRadius,length=0.0, radius = c.bodyRadius)
+	currentID = currentID + 1
+
+        # Front wheel 
+        sim.Send_Cylinder(objectID=currentID,x=x+c.bodyRadius,y=y,z=c.wheelRadius,length=0.0, radius = c.wheelRadius, r=0, g=1, b=0)
+        currentID = currentID + 1
+
+        # Right wheel
+        sim.Send_Cylinder(objectID=currentID,x=x,y=y-c.bodyRadius,z=c.wheelRadius,length=0.0, radius = c.wheelRadius, r=0, g=0, b=1)
+        currentID = currentID + 1
+
+        # Back wheel
+        sim.Send_Cylinder(objectID=currentID,x=x-c.bodyRadius,y=y,z=c.wheelRadius,length=0.0, radius = c.wheelRadius, r=1, g=0, b=1)
+        currentID = currentID + 1
+
+        # Left wheel
+        sim.Send_Cylinder(objectID=currentID,x=x,y=y+c.bodyRadius,z=c.wheelRadius,length=0.0, radius = c.wheelRadius, r=1, g=0, b=0)
+        currentID = currentID + 1
+
+def Create_Robot(sim):
+
+	Create_Robot_At(sim, x = c.startX , y = c.startY , theta = 0.0 )
+	
 # ------ Main function ---------
 
 sim = PYROSIM(playPaused=True)
 
 Create_Arena(sim)
 
-Create_Position_Markers(sim)
+# Create_Position_Markers(sim)
+
+Create_Robot(sim)
 
 sim.Start()
