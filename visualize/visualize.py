@@ -1,6 +1,19 @@
+import numpy
 from numpy import genfromtxt
+from matplotlib import pyplot as plt
 
-my_data = genfromtxt('../Feb_16_2017 L16A Data and Corrections.csv', delimiter=',')
+d = genfromtxt('../data.csv', delimiter=',')
 
-print my_data
- 
+d = d[1:,:]
+
+fig,ax = plt.subplots()
+
+heatmap = ax.pcolor(d)
+
+xlabels = ['X','Y','PHI','IR1','LDR1','IR2','LDR2','IR3','LDR3','IR4','LDR4','IR5','LDR5','IR6','LDR6','IR7','LDR7','IR8','LDR8']
+
+ax.set_xticks(numpy.arange(0,19))
+
+ax.set_xticklabels(xlabels)
+
+plt.show()
