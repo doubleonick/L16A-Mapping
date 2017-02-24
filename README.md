@@ -3,7 +3,9 @@ All data and documentation associated with mapping the Landro arena with L16A.
 
 ## Simulated robot notes.
 
-If on a Mac, navigate into the pyrosim directory. Then, type
+1. The simulated Landro looks like this: https://docs.google.com/drawings/d/1kELELIpXwdH0xHy127cPrsfh9Lv7aSW-JMtkflHt4e4/edit?usp=sharing
+
+2. To run the simulation: If on a Mac, navigate into the pyrosim directory. Then, type
 
 ```python Landro.py```
 
