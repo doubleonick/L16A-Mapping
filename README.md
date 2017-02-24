@@ -1,6 +1,12 @@
 # L16A-Mapping
 All data and documentation associated with mapping the Landro arena with L16A.
 
+## Simulated robot notes.
+
+If on a Mac, navigate into the pyrosim directory. Then, type
+
+```python Landro.py```
+
 ## Physical robot notes.
 
 Performed with Create 2 "C".  Performed by Nick L. and Ken L.
