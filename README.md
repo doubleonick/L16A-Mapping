@@ -1,6 +1,8 @@
 # L16A-Mapping
 All data and documentation associated with mapping the Landro arena with L16A.
 
+## Physical robot notes.
+
 Performed with Create 2 "C".  Performed by Nick L. and Ken L.
 y = 18.5, 48.5, 78.5 run on 27 January, 2017 between 16:00 and 17:15 hrs
 
