@@ -18,7 +18,7 @@ The arena for these Landro experiments is 397.4 cm in the x direction by 247 cm 
 There is a single white LED lamp located at (198.7, 0).  The light diffuses across a semicircular
 area within the rectangular arena.
 A grid was marked using straight edges, markers and chalk snaps starting at (18.7, 18.5) and translating
-in 30 cm increments in each direction to (378.7, 378.5).  These, and all of the intermediate coordinates
+in 30 cm increments in each direction to (378.7, 228.5).  These, and all of the intermediate coordinates
 represent where the center of Landro was placed at each of the 104 positions visited.  At each of these
 positions, Landro rotated clockwise 22.5 degrees at a time collecting data from its 16 sensors at each
 orientation ranging from 0 degrees to 337.5 degrees.  An orientation of 0 degrees was taken to mean that

@@ -1,13 +1,13 @@
 evaluationTime = 100
 
-scalingFactor = 0.01
+sf = 0.01
 
 minX = 0
 
-maxX = 397.4 * scalingFactor
+maxX = 397.4 * sf
 
 minY = 0
 
-maxY = 247 * scalingFactor
+maxY = 247 * sf
 
-wallWidth = 5 * scalingFactor
+wallWidth = 5 * sf
