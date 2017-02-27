@@ -5,7 +5,7 @@ All data and documentation associated with mapping the Landro arena with L16A.
 
 1. The simulated Landro looks like this: https://docs.google.com/drawings/d/1kELELIpXwdH0xHy127cPrsfh9Lv7aSW-JMtkflHt4e4/edit?usp=sharing
 
-2. A video of the robot in operation is here: https://youtu.be/0KQiA8cg7a0
+2. A video of the robot in operation is here: https://youtu.be/bHH6b9otKl4 
 
 3. To run the simulation: If on a Mac, navigate into the pyrosim directory. Then, type
 

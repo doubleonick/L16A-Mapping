@@ -1,4 +1,4 @@
-from simulation import SIMULATION
+from individual import INDIVIDUAL 
 
-sim = SIMULATION()
+ind = INDIVIDUAL()
 

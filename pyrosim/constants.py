@@ -1,8 +1,8 @@
-evaluationTime = 1000
+evaluationTime = 500
 
 sf = 0.01
 
-wallWidth = 5 * sf
+wallWidth = 10 * sf
 
 # ------ x
 
