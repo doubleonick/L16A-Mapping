@@ -30,8 +30,8 @@ spacingY = 30 * sf
 
 # ------- robot
 
-bodyRadius = 5.0 * sf
+bodyRadius = 17.0 * sf
 
-wheelRadius = bodyRadius / 3.0
+wheelRadius = 3.5 * sf
 
 speed = 10.0
