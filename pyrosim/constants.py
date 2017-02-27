@@ -1,4 +1,4 @@
-evaluationTime = 100
+evaluationTime = 1000
 
 sf = 0.01
 
@@ -33,3 +33,5 @@ spacingY = 30 * sf
 bodyRadius = 5.0 * sf
 
 wheelRadius = bodyRadius / 3.0
+
+speed = 10.0

@@ -8,6 +8,8 @@ import constants as c
 
 import numpy as np
 
+import random
+
 class SIMULATION:
 
         def __init__(self):
@@ -16,9 +18,11 @@ class SIMULATION:
 
 		self.arena = ARENA(self.sim)
 
-		self.robot = ROBOT(self.sim)
+		xPosition = random.random()*(c.endX-c.startX) + c.startX
 
-		# self.Create_Robot(self.sim)
+                yPosition = random.random()*(c.endY-c.startY) + c.startY
+
+		self.robot = ROBOT(self.sim, x = xPosition , y = yPosition , theta = 0.0 )
 
 		self.sim.Start()
 

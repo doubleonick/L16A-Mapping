@@ -310,7 +310,7 @@ void OBJECT::CreateBox(dWorldID world, dSpaceID space,
         body = dBodyCreate (world);
         dBodySetPosition (body,x,y,z);
         dMassSetBox (&m,1,length,width,height);
-        dMassAdjust (&m,1);
+        dMassAdjust (&m,10000);
         dBodySetMass (body,&m);
         geom = dCreateBox(space,length,width,height);
         dGeomSetBody (geom,body);

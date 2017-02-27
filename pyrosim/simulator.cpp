@@ -67,6 +67,18 @@ void Handle_Ray_Sensors(dGeomID o1, dGeomID o2) {
 	Handle_Ray_Sensor(o2,o1);
 }
 
+int Cylinders_Collide( dGeomID o1, dGeomID o2 ) {
+
+	return(	(dGeomGetClass(o1) == dCapsuleClass) && 
+		(dGeomGetClass(o2) == dCapsuleClass) );
+}
+
+int Boxes_Collide( dGeomID o1, dGeomID o2 ) {
+        
+        return( (dGeomGetClass(o1) == dBoxClass) &&
+                (dGeomGetClass(o2) == dBoxClass) );
+}
+
 static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 {
   int i,n;
@@ -83,7 +95,9 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 
         OBJECT *d2 = (OBJECT *)dGeomGetData(o2);
 
-	if ( d1 && d2 ) // Cancel collisions between objects. 
+	// if ( d1 && d2 ) // Cancel collisions between objects. 
+	if ( Cylinders_Collide(o1,o2) ||
+	     Boxes_Collide(o1,o2) ) // Cancel collisions between pairs of cylinders and pairs of boxes.
 
 		return;
 
@@ -125,8 +139,12 @@ static void start()
 {
   dAllocateODEDataForThread(dAllocateMaskAll);
 
-  static float xyz[3] = {0.8317f,-0.9817f,0.8000f};
-  static float hpr[3] = {121.0000f,-27.5000f,0.0000f};
+  //static float xyz[3] = {0.8317f,-0.9817f,0.8000f};
+  static float xyz[3] = {1.97652f,0.241888f,2.59f};
+
+  //static float hpr[3] = {121.0000f,-27.5000f,0.0000f};
+  static float hpr[3] = {90.f,-76.f,0.0000f};
+
   dsSetViewpoint (xyz,hpr);
 }
 
@@ -176,6 +194,18 @@ static void simLoop (int pause)
 		Simulate_For_One_Time_Step();
 
 	environment->Draw();
+
+  	//float xyz[3];
+  	//float hpr[3];
+  	//dsGetViewpoint (xyz,hpr);
+
+	//std::cerr << xyz[0] << " ";
+        //std::cerr << xyz[1] << " ";
+        //std::cerr << xyz[2] << " ";
+
+        //std::cerr << hpr[0] << " ";
+        //std::cerr << hpr[1] << " ";
+        //std::cerr << hpr[2] << "\n";
 }
 
 void Initialize_ODE(void) {
