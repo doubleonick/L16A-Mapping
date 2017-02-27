@@ -63,7 +63,7 @@ void JOINT::Actuate(void) {
 
 	dJointSetHingeParam(joint,dParamVel, speed * diff);
 
-	dJointSetHingeParam(joint,dParamFMax,1000000);
+	dJointSetHingeParam(joint,dParamFMax,1);
 }
 
 int JOINT::Connect_Sensor_To_Sensor_Neuron(int sensorID , NEURON *sensorNeuron) {
@@ -199,12 +199,14 @@ void JOINT::Create_Hinge_Joint_In_Simulator(dWorldID world, OBJECT *firstObject,
 
         dJointSetHingeAxis(joint,normalX,normalY,normalZ);
 
+	/*
         if ( positionControl == true ) {
 
                 dJointSetHingeParam(joint,dParamLoStop,lowStop);
 
                 dJointSetHingeParam(joint,dParamHiStop,highStop);
         }
+	*/
 }
 
 int  JOINT::Is_Fixed_Joint(OBJECT *firstObject, OBJECT *secondObject) {

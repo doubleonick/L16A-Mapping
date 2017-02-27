@@ -54,7 +54,7 @@ class ROBOT:
 
 		for t in range(0,6):
 
-			sim.Send_Sensor_Neuron(neuronID=t, sensorID=t)
+			sim.Send_Sensor_Neuron(neuronID=t, sensorID=t, tau=0.1)
 
 		sim.Send_Motor_Neuron(neuronID=6, jointID=2, tau=0.1)
 

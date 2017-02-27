@@ -79,6 +79,19 @@ int Boxes_Collide( dGeomID o1, dGeomID o2 ) {
                 (dGeomGetClass(o2) == dBoxClass) );
 }
 
+int Box_And_Floor_Collide( dGeomID o1, dGeomID o2 ) {
+
+	int c1 = (dGeomGetClass(o1) == dBoxClass) &&
+
+		 (dGeomGetClass(o2) != dCapsuleClass);
+
+        int c2 = (dGeomGetClass(o2) == dBoxClass) &&
+
+                 (dGeomGetClass(o1) != dCapsuleClass);
+
+	return ( c1 || c2 );
+}
+
 static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 {
   int i,n;
@@ -95,9 +108,11 @@ static void nearCallback (void *data, dGeomID o1, dGeomID o2)
 
         OBJECT *d2 = (OBJECT *)dGeomGetData(o2);
 
-	// if ( d1 && d2 ) // Cancel collisions between objects. 
-	if ( Cylinders_Collide(o1,o2) ||
-	     Boxes_Collide(o1,o2) ) // Cancel collisions between pairs of cylinders and pairs of boxes.
+	if ( 	Cylinders_Collide(o1,o2) ||
+
+	     	Boxes_Collide(o1,o2) ||
+
+		Box_And_Floor_Collide(o1,o2) ) // Cancel collisions between pairs of cylinders and pairs of boxes.
 
 		return;
 
