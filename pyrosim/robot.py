@@ -44,6 +44,12 @@ class ROBOT:
                 # Left joint
                 sim.Send_Joint(jointID=5, firstObjectID=4, secondObjectID=10, x=objX,y=objY,z=c.wheelRadius, n1=firstN1, n2=firstN2, n3=0, lo=-c.speed, hi=+c.speed, positionControl = False)
 
+		# Make the arena walls immovable. 
+
+		for w in range(0,4):
+
+			sim.Send_Joint(jointID=6+w, firstObjectID=w, secondObjectID=-1)
+
 	def Create_Neurons(self,sim):
 
 		for t in range(0,6):
