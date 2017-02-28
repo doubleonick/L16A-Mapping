@@ -11,9 +11,9 @@ private:
 
 	int ID;
 
-	double *x, *y, *z;
+	double *vals; 
 
-        NEURON* mySensorNeurons[3];
+        NEURON** mySensorNeurons;
 
 public:
 	POSITION_SENSOR(int myID, int evalPeriod);
@@ -24,7 +24,7 @@ public:
 
         int  Get_ID(void);
 
-	void Poll(dBodyID body, int t);
+	void Poll(dBodyID body, int t, double theta);
 
         void Update_Sensor_Neurons(int t);
 

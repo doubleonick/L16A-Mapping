@@ -24,9 +24,15 @@ class INDIVIDUAL:
 
                 yPosition = random.random()*(c.endY-c.startY) + c.startY
 
-		randomTheta = random.random()*2.0*math.pi
+		randomTheta = 3.0*math.pi/2.0 # random.random()*2.0*math.pi
 
 		self.robot = ROBOT(self.sim, x = xPosition , y = yPosition , theta = randomTheta) 
 
 		self.sim.Start()
+
+		self.sim.Wait_To_Finish()
+
+		sd = self.sim.Get_Sensor_Data(sensorID=0,s=0)
+
+		print sd
 

@@ -9,13 +9,11 @@ POSITION_SENSOR::POSITION_SENSOR(int myID, int evalPeriod) {
 
 	ID = myID;
 
-	x = new double[evalPeriod];
+	vals = new double[16*evalPeriod];
 
-	y = new double[evalPeriod];
+	mySensorNeurons = new NEURON*[16];
 
-	z = new double[evalPeriod];
-
-	for ( int i = 0 ; i < 3 ; i++)
+	for ( int i = 0 ; i < 16 ; i++)
 
         	mySensorNeurons[i] = NULL;
 }
@@ -34,43 +32,33 @@ int  POSITION_SENSOR::Get_ID(void) {
         return ID;
 }
 
-void POSITION_SENSOR::Poll(dBodyID body, int t) {
+void POSITION_SENSOR::Poll(dBodyID body, int t, double theta) {
 
-        const dReal *pos;
+	for (int i = 0 ; i < 16 ; i++ )
 
-        pos = dBodyGetPosition(body);
-
-	x[t] = pos[0];
-
-	y[t] = pos[1];
-
-	z[t] = pos[2];
+		vals[16*t + i] = theta; 
 }
 
 void POSITION_SENSOR::Update_Sensor_Neurons(int t) {
 
-        if ( mySensorNeurons[0] )
+	for (int i = 0 ; i < 16 ; i++ )
 
-                mySensorNeurons[0]->Set( x[t] );
+		if ( mySensorNeurons[i] ) 
 
-        if ( mySensorNeurons[1] )
-
-                mySensorNeurons[1]->Set( y[t] );
-
-        if ( mySensorNeurons[2] )
-
-                mySensorNeurons[2]->Set( z[t] );
+			mySensorNeurons[i]->Set( vals[16*t + i] );
 }
 
 void POSITION_SENSOR::Write_To_Python(int evalPeriod) {
 
         char outString[1000000];
 
-        sprintf(outString,"%d %d ",ID,3);
+        sprintf(outString,"%d %d ",ID,16);
 
         for ( int  t = 0 ; t < evalPeriod ; t++ ) 
 
-                sprintf(outString,"%s %f %f %f ",outString,x[t],y[t],z[t]);
+		for ( int i = 0 ; i < 16 ; i++ )
+
+                	sprintf(outString,"%s %f ",outString,vals[16*t + i]);
 
         sprintf(outString,"%s \n",outString);
 

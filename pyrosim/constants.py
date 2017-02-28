@@ -1,4 +1,4 @@
-evaluationTime = 500
+evaluationTime = 100
 
 sf = 0.01
 

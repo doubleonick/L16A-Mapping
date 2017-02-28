@@ -12,13 +12,14 @@ class NEURON;
 
 class OBJECT {
 
+public:
+        dBodyID body;
+
 private:
 
 	int	ID;
 
 	int	myShape;
-
-        dBodyID body;
 
         dGeomID geom;
 
@@ -79,7 +80,7 @@ public:
 
 	double Get_Red_Component(void);
 
-        void Poll_Sensors(int numObjects, OBJECT **objects, int t);
+        void Poll_Sensors(int numObjects, OBJECT **objects, int t, double theta);
 
 	void Read_From_Python(dWorldID world, dSpaceID space, int shape);
 

@@ -166,7 +166,7 @@ double OBJECT::Get_Red_Component(void) {
 	return r;
 }
 
-void OBJECT::Poll_Sensors(int numObjects, OBJECT **objects, int t) {
+void OBJECT::Poll_Sensors(int numObjects, OBJECT **objects, int t, double theta) {
 
 	if ( lightSensor ) {
 
@@ -177,7 +177,7 @@ void OBJECT::Poll_Sensors(int numObjects, OBJECT **objects, int t) {
 
         if ( positionSensor )
 
-                positionSensor->Poll(body,t);
+                positionSensor->Poll(body,t,theta);
 
 	if ( vestibularSensor )
 

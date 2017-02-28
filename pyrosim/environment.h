@@ -76,6 +76,8 @@ private:
 
 	void Create_Vestibular_Sensor(int evalPeriod);
 
+	double Get_Robot_Orientation(void);
+
         void Update_Sensor_Neurons(int t);
 };
 

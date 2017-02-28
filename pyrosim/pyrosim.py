@@ -28,9 +28,9 @@ class PYROSIM:
 
 			commandsToSend.append('-pause')
 
-		self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE, stderr=PIPE)
+		# self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
-		# self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE)
+		self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE)
 
 		self.Send('EvaluationTime '+str(evalTime)+'\n')
 
@@ -295,7 +295,7 @@ class PYROSIM:
 
 	def Collect_Sensor_Data(self,dataFromSimulator):
 
-		self.dataFromPython = np.zeros([self.numSensors,4,self.evaluationTime],dtype='f')
+		self.dataFromPython = np.zeros([self.numSensors,16,self.evaluationTime],dtype='f')
 
 		dataFromSimulator = dataFromSimulator[0]
 

@@ -110,15 +110,17 @@ class ROBOT:
 
 		self.Create_Sensors(sim)
 
-		self.Create_Neurons(sim)
+		#self.Create_Neurons(sim)
 
-		self.Create_Synapses(sim)
+		#self.Create_Synapses(sim)
 
 	def Create_Sensors(self,sim):
 
-		for t in range(0,6):
+		sim.Send_Position_Sensor(sensorID = 0 , objectID = 4 )
 
-			sim.Send_Touch_Sensor(sensorID=t, objectID=5+t)
+		#for t in range(0,6):
+
+		#	sim.Send_Touch_Sensor(sensorID=t, objectID=5+t)
 
 	def Create_Synapses(self,sim):
 
