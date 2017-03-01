@@ -24,7 +24,7 @@ public:
 
         int  Get_ID(void);
 
-	void Poll(dBodyID body, int t, double theta);
+	void Poll(dBodyID body, int t, double x, double y, double theta);
 
         void Update_Sensor_Neurons(int t);
 

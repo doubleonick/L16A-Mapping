@@ -30,9 +30,29 @@ class INDIVIDUAL:
 
 		self.sim.Start()
 
+		exit()
+
 		self.sim.Wait_To_Finish()
 
-		sd = self.sim.Get_Sensor_Data(sensorID=0,s=0)
+		x = self.sim.Get_Sensor_Data(sensorID=0,s=0)
 
-		print sd
+                y = self.sim.Get_Sensor_Data(sensorID=0,s=1)
+
+		x = x / c.sf
+
+		y = y / c.sf
+
+		theta = self.sim.Get_Sensor_Data(sensorID=0,s=2)
+
+		theta = 180.0 * theta / math.pi
+
+		print x
+
+		print ''
+
+		print y
+
+		print ''
+
+		print theta
 

@@ -32,11 +32,23 @@ int  POSITION_SENSOR::Get_ID(void) {
         return ID;
 }
 
-void POSITION_SENSOR::Poll(dBodyID body, int t, double theta) {
+void POSITION_SENSOR::Poll(dBodyID body, int t, double x, double y, double theta) {
 
+	/*
 	for (int i = 0 ; i < 16 ; i++ )
 
 		vals[16*t + i] = theta; 
+	*/
+
+	vals[16*t + 0] = x;
+
+	vals[16*t + 1] = y;
+
+	vals[16*t + 2] = theta;
+
+        for (int i = 3 ; i < 16 ; i++ )
+                
+                vals[16*t + i] = 0.0;
 }
 
 void POSITION_SENSOR::Update_Sensor_Neurons(int t) {
@@ -45,7 +57,9 @@ void POSITION_SENSOR::Update_Sensor_Neurons(int t) {
 
 		if ( mySensorNeurons[i] ) 
 
-			mySensorNeurons[i]->Set( vals[16*t + i] );
+			// mySensorNeurons[i]->Set( vals[16*t + i] );
+
+			mySensorNeurons[i]->Set( ((double) rand() / (RAND_MAX))*2.0 - 1.0 );
 }
 
 void POSITION_SENSOR::Write_To_Python(int evalPeriod) {

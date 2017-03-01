@@ -28,9 +28,9 @@ class PYROSIM:
 
 			commandsToSend.append('-pause')
 
-		# self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE, stderr=PIPE)
+		self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
-		self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE)
+		# self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE)
 
 		self.Send('EvaluationTime '+str(evalTime)+'\n')
 

@@ -1,37 +1,49 @@
-evaluationTime = 100
+evaluationTime = 1000
 
-sf = 0.01
+sf = 0.05 # 0.01
 
-wallWidth = 10 * sf
+wallWidth = 10
 
 # ------ x
 
 minX = 0
 
-maxX = 397.4 * sf
+maxX = 397.4
 
-startX = 18.7 * sf
+startX = 18.7
 
-endX = 378.7 * sf
+endX = 378.7
 
-spacingX = 30 * sf
+spacingX = 30
+
+ticksX = 13.
 
 # ------- y
 
-minY = 0
+minY = 0.
 
-maxY = 247 * sf
+maxY = 247
 
-startY = 18.5 * sf
+startY = 18.5
 
-endY = 228.5 * sf
+endY = 228.5
 
-spacingY = 30 * sf
+spacingY = 30
+
+ticksY = 8.
+
+# ------- orientation
+
+startTheta = 0.
+
+endTheta = 337.5
+
+ticksTheta = 16.
 
 # ------- robot
 
-bodyRadius = 17.0 * sf
+bodyRadius = 17.0
 
-wheelRadius = 3.5 * sf
+wheelRadius = 3.5
 
 speed = 10.0

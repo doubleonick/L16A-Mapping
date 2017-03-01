@@ -175,9 +175,15 @@ void OBJECT::Poll_Sensors(int numObjects, OBJECT **objects, int t, double theta)
 		lightSensor->Poll(body,closestLightSource->Get_Body(),t);
 	}
 
-        if ( positionSensor )
+        if ( positionSensor ) {
 
-                positionSensor->Poll(body,t,theta);
+		const dReal *myPos = dBodyGetPosition(body);
+
+		double x = myPos[0];
+		double y = myPos[1];
+
+                positionSensor->Poll(body,t,x,y,theta);
+	}
 
 	if ( vestibularSensor )
 

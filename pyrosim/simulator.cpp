@@ -155,10 +155,10 @@ static void start()
   dAllocateODEDataForThread(dAllocateMaskAll);
 
   //static float xyz[3] = {0.8317f,-0.9817f,0.8000f};
-  static float xyz[3] = {1.97652f,0.241888f,2.59f};
+  static float xyz[3] = {9.86652f,1.32189f,13.66f};
 
   //static float hpr[3] = {121.0000f,-27.5000f,0.0000f};
-  static float hpr[3] = {90.f,-76.f,0.0000f};
+  static float hpr[3] = {90.f,-76.5f,0.0000f};
 
   dsSetViewpoint (xyz,hpr);
 }
@@ -210,17 +210,19 @@ static void simLoop (int pause)
 
 	environment->Draw();
 
-  	//float xyz[3];
-  	//float hpr[3];
-  	//dsGetViewpoint (xyz,hpr);
+/*
+  	float xyz[3];
+  	float hpr[3];
+  	dsGetViewpoint (xyz,hpr);
 
-	//std::cerr << xyz[0] << " ";
-        //std::cerr << xyz[1] << " ";
-        //std::cerr << xyz[2] << " ";
+	std::cerr << xyz[0] << " ";
+        std::cerr << xyz[1] << " ";
+        std::cerr << xyz[2] << " ";
 
-        //std::cerr << hpr[0] << " ";
-        //std::cerr << hpr[1] << " ";
-        //std::cerr << hpr[2] << "\n";
+        std::cerr << hpr[0] << " ";
+        std::cerr << hpr[1] << " ";
+        std::cerr << hpr[2] << "\n";
+*/
 }
 
 void Initialize_ODE(void) {
