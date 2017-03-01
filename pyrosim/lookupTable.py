@@ -16,9 +16,21 @@ for line in f.readlines():
 	y = float(line[1])
 	theta = float(line[2])
 
-	xIndex = x / c.endX
+	xIndex = int(x * (c.ticksX-1) / c.endX)
 
-	print x,y,theta, xIndex
+        yIndex = int(y * (c.ticksY-1) / c.endY)
+
+        thetaIndex = int(theta * (c.ticksTheta-1) / c.endTheta)
+
+	lookupTable[xIndex,yIndex,thetaIndex,0] = x
+        lookupTable[xIndex,yIndex,thetaIndex,1] = y
+        lookupTable[xIndex,yIndex,thetaIndex,2] = theta
+
+	for s in range(3,19):
+		lookupTable[xIndex,yIndex,thetaIndex,s] = float(line[s])
 
 f.close()
 
+print lookupTable[ 0 , 0 , 0 , : ]
+
+print lookupTable[ 12 , 7 , 15 , :]
