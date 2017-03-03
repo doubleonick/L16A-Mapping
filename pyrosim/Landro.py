@@ -26,7 +26,7 @@ initialY = Random_Y()
 
 initialTheta = Random_Theta() 
 
-ind.Evaluate(initialX,initialY,initialTheta)
+ind.Evaluate(initialX,initialY,initialTheta,pb=False)
 
 print 'total light collected = ' + str(ind.fitness)
 

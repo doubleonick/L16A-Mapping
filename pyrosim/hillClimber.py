@@ -1,4 +1,4 @@
-import math
+import copy, math
 
 import constants as c
 
@@ -8,8 +8,6 @@ class HILLCLIMBER:
 
         def __init__(self):
 
-                self.parent = INDIVIDUAL()
-
                 self.initialX = self.Fraction_Of_X(0.5)
 
                 self.initialY = self.Fraction_Of_Y(0.5)
@@ -18,7 +16,9 @@ class HILLCLIMBER:
 
 	def Evolve(self):
 
-		self.parent.Evaluate(self.initialX,self.initialY,self.initialTheta)
+                parent = INDIVIDUAL()
+
+		parent.Evaluate(self.initialX,self.initialY,self.initialTheta,pb=True)
 
 		for currentGeneration in range(0,c.numGenerations):
 
@@ -26,7 +26,9 @@ class HILLCLIMBER:
 
 			child.Mutate()
 
-			child.Evaluate()
+			child.Evaluate(self.initialX,self.initialY,self.initialTheta,pb=True)
+
+			self.Print(parent,child)
 
 			if ( child.fitness > parent.fitness ):
 
@@ -43,3 +45,9 @@ class HILLCLIMBER:
 	def Fraction_Of_Theta(self,fraction):
 
         	return fraction*2.0*math.pi
+
+	def Print(self,parent,child):
+
+		print parent.fitness,
+
+		print child.fitness

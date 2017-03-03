@@ -16,7 +16,7 @@ class INDIVIDUAL:
 
         def __init__(self):
 
-		self.genome = np.random.random([16,2]) * 2 - 1 
+		self.genome = np.random.random([c.numSensors,c.numMotors]) * 2 - 1 
 
 		self.fitness = 0.0
 
@@ -30,9 +30,9 @@ class INDIVIDUAL:
 
 		self.fitness = totalLight
 	
-	def Evaluate(self,initialX,initialY,initialTheta):
+	def Evaluate(self,initialX,initialY,initialTheta,pb):
 
-		sim = PYROSIM(playPaused=False)
+		sim = PYROSIM(playBlind=pb)
 
 		arena = ARENA(sim)
 
@@ -44,3 +44,10 @@ class INDIVIDUAL:
 
 		self.Compute_Fitness(sim)
 
+	def Mutate(self):
+
+		i = np.random.randint(0,c.numSensors)
+
+		j = np.random.randint(0,c.numMotors)
+
+		self.genome[i,j] = self.genome[i,j]

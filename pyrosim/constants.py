@@ -4,6 +4,18 @@ numGenerations = 5
 
 evaluationTime = 100
 
+# ------- robot parameters
+
+bodyRadius = 17.0
+
+wheelRadius = 3.5
+
+speed = 10.0
+
+numSensors = 16
+
+numMotors = 2
+
 # ------- Arena parameters
 
 sf = 0.05
@@ -46,10 +58,3 @@ endTheta = 337.5
 
 ticksTheta = 16.
 
-# ------- robot
-
-bodyRadius = 17.0
-
-wheelRadius = 3.5
-
-speed = 10.0
