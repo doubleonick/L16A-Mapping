@@ -331,6 +331,4 @@ class PYROSIM:
 
 	def Send(self,stringToSend):
 
-		print stringToSend
-
 		self.simulator.stdin.write( stringToSend )

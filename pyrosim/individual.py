@@ -20,6 +20,16 @@ class INDIVIDUAL:
 
 		self.fitness = 0.0
 
+	def Compute_Fitness(self,sim):
+
+		totalLight = 0.0
+
+		for i in range(3,19,2):
+
+			totalLight = totalLight + sim.dataFromPython[0,i,-1]
+
+		self.fitness = totalLight
+	
 	def Evaluate(self):
 
 		sim = PYROSIM(playPaused=False)
@@ -30,11 +40,13 @@ class INDIVIDUAL:
 
                 yPosition = random.random()*(c.endY-c.startY) + c.startY
 
-		randomTheta = 3.0*math.pi/2.0 # random.random()*2.0*math.pi
+		randomTheta = random.random()*2.0*math.pi
 
 		robot = ROBOT(sim, self.genome, x = xPosition , y = yPosition , theta = randomTheta)
 
 		sim.Start()
 
 		sim.Wait_To_Finish()
+
+		self.Compute_Fitness(sim)
 
