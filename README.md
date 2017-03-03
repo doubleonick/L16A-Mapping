@@ -12,6 +12,7 @@ All data and documentation associated with mapping the Landro arena with L16A.
 ```python Landro.py```
 
 ## Physical robot notes.
+Landro has a ring of 16 sensors, alternating between infrared proximity sensors (IR), and light dependent resistors (LDR) that give information about ambient light intensity.  The sensors at 0 degrees, 90, 180 and 270 degrees with respect to the Landro's forward heading are IR sensors.  Every 22.5 degrees away from an IR is an LDR; IRs are spaced at 45 degrees from one another, and LDRs are spaced 45 degrees from one another.
 
 Performed with Create 2 "C".  Performed by Nick L. and Ken L.
 y = 18.5, 48.5, 78.5 run on 27 January, 2017 between 16:00 and 17:15 hrs
