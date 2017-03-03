@@ -2,7 +2,9 @@
 
 numGenerations = 5
 
-evaluationTime = 1000
+numTrials = 2 
+
+evaluationTime = 100
 
 # ------- robot parameters
 
@@ -23,6 +25,12 @@ numMotors = 2
 sf = 0.05
 
 wallWidth = 10
+
+# ------ Light source
+
+lightSourceX = 198.7
+
+lightSourceY = 0
 
 # ------ x
 

@@ -28,21 +28,37 @@ class INDIVIDUAL:
 
 			totalLight = totalLight + meanOfCurrentLightSensor
 
-		self.fitness = totalLight
-	
+		self.fitness = self.fitness + totalLight
+
+        def End_Evaluation(self,trialIndex):
+
+                self.sims[trialIndex].Wait_To_Finish()
+
+                self.Compute_Fitness(self.sims[trialIndex])
+
 	def Evaluate(self,initialX,initialY,initialTheta,pb):
 
-		sim = PYROSIM(playBlind=pb)
+		self.sims = {}
 
-		robot = ROBOT(sim, self.genome, x = initialX , y = initialY , theta = initialTheta)
+		self.Start_Evaluation(0,initialX,initialY,initialTheta,pb)
 
-		arena = ARENA(sim)
+		self.End_Evaluation(0)
 
-		sim.Start()
+		del self.sims
 
-		sim.Wait_To_Finish()
+	def Evaluate_Multiple_Times(self,initialXs,initialYs,initialThetas,pb):
 
-		self.Compute_Fitness(sim)
+		self.sims = {}
+
+		for t in range(0,c.numTrials):
+
+			self.Start_Evaluation(t,initialXs[t],initialYs[t],initialThetas[t],pb)
+
+                for t in range(0,c.numTrials):
+
+                        self.End_Evaluation(t)
+
+		del self.sims
 
 	def Mutate(self):
 
@@ -56,10 +72,30 @@ class INDIVIDUAL:
  
 		self.genome[i,j] = np.random.normal( mean , std ) 
 
+	def Reset(self):
+
+		self.fitness = 0.0
+
 	def Spawn_Mutant(self):
 
                 mutant = copy.deepcopy(self)
 
                 mutant.Mutate()
 
+		mutant.Reset()
+
 		return mutant
+
+        def Start_Evaluation(self,trialIndex,initialX,initialY,initialTheta,pb):
+
+                self.sims[trialIndex] = PYROSIM(playBlind=pb)
+
+                self.robot = ROBOT(self.sims[trialIndex], self.genome, x = initialX , y = initialY , theta = initialTheta)
+
+		del self.robot
+
+                self.arena = ARENA(self.sims[trialIndex])
+
+		del self.arena
+
+                self.sims[trialIndex].Start()

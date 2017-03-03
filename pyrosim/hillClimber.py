@@ -1,5 +1,7 @@
 import math
 
+import numpy as np
+
 import constants as c
 
 from individual import INDIVIDUAL
@@ -8,11 +10,7 @@ class HILLCLIMBER:
 
         def __init__(self):
 
-                self.initialX = self.Fraction_Of_X(0.5)
-
-                self.initialY = self.Fraction_Of_Y(0.5)
-
-                self.initialTheta = self.Fraction_Of_Theta(0.5)
+		self.Create_Trials()
 
 		self.playBlind = True
 
@@ -22,11 +20,27 @@ class HILLCLIMBER:
 
                         self.parent = self.child
 
+        def Create_Trials(self):
+
+                self.initialXs = np.random.random(c.numTrials)
+
+                self.initialYs = np.random.random(c.numTrials)
+
+                self.initialThetas = np.random.random(c.numTrials)
+
+		for t in range(0,c.numTrials):
+
+			self.initialXs[t] = self.Fraction_Of_X(self.initialXs[t])
+
+                        self.initialYs[t] = self.Fraction_Of_Y(self.initialYs[t])
+
+                        self.initialThetas[t] = self.Fraction_Of_Theta(self.initialThetas[t])
+
 	def Evolve(self):
 
                 self.parent = INDIVIDUAL()
 
-		self.parent.Evaluate(self.initialX,self.initialY,self.initialTheta,self.playBlind)
+		self.parent.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,self.playBlind)
 
 		for self.currentGeneration in range(0,c.numGenerations):
 
@@ -48,7 +62,7 @@ class HILLCLIMBER:
 
 		self.child = self.parent.Spawn_Mutant()
 
-                self.child.Evaluate(self.initialX,self.initialY,self.initialTheta,self.playBlind)
+                self.child.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,self.playBlind)
 
                 self.Print()
 
@@ -64,4 +78,4 @@ class HILLCLIMBER:
 
 	def Show_Best(self):
 
-		self.parent.Evaluate(self.initialX,self.initialY,self.initialTheta,pb=False)	
+		self.parent.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,pb=False)	
