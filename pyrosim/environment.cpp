@@ -139,6 +139,14 @@ double ENVIRONMENT::Get_Robot_Orientation(void) {
 
 	theta = (theta * 180.0) / 3.14159;
 
+	while ( theta >= 360.0 )
+
+		theta = theta - 360.0;
+
+	while ( theta < 0.0 )
+
+		theta = theta + 360.0;
+
 	return theta;
 }
 

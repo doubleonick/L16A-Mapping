@@ -297,7 +297,7 @@ class PYROSIM:
 
 	def Collect_Sensor_Data(self,dataFromSimulator):
 
-		self.dataFromPython = np.zeros([self.numSensors,16,self.evaluationTime],dtype='f')
+		self.dataFromPython = np.zeros([self.numSensors,19,self.evaluationTime],dtype='f')
 
 		dataFromSimulator = dataFromSimulator[0]
 

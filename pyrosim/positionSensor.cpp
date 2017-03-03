@@ -10,7 +10,7 @@ POSITION_SENSOR::POSITION_SENSOR(int myID, int evalPeriod) {
 
 	ID = myID;
 
-	vals = new double[16*evalPeriod];
+	vals = new double[19*evalPeriod];
 
 	mySensorNeurons = new NEURON*[19];
 
@@ -50,17 +50,11 @@ void POSITION_SENSOR::Poll(dBodyID body, int t, double x, double y, double theta
         std::cerr << thetaIndex << "   ";
 
 
-	/*
-	for (int i = 0 ; i < 16 ; i++ )
+	vals[19*t + 0] = x;
 
-		vals[16*t + i] = theta; 
-	*/
+	vals[19*t + 1] = y;
 
-	vals[16*t + 0] = x;
-
-	vals[16*t + 1] = y;
-
-	vals[16*t + 2] = theta;
+	vals[19*t + 2] = theta;
 
         for (int j = 3 ; j < 19 ; j++ ) {
                 
@@ -88,13 +82,13 @@ void POSITION_SENSOR::Write_To_Python(int evalPeriod) {
 
         char outString[1000000];
 
-        sprintf(outString,"%d %d ",ID,16);
+        sprintf(outString,"%d %d ",ID,19);
 
         for ( int  t = 0 ; t < evalPeriod ; t++ ) 
 
-		for ( int i = 0 ; i < 16 ; i++ )
+		for ( int i = 0 ; i < 19 ; i++ )
 
-                	sprintf(outString,"%s %f ",outString,vals[16*t + i]);
+                	sprintf(outString,"%s %f ",outString,vals[19*t + i]);
 
         sprintf(outString,"%s \n",outString);
 
