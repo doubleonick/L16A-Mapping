@@ -16,9 +16,15 @@ class INDIVIDUAL:
 
         def __init__(self):
 
-		self.sim = PYROSIM(playPaused=False)
+		self.genome = np.random.random([16,2]) * 2 - 1 
 
-		self.arena = ARENA(self.sim)
+		self.fitness = 0.0
+
+	def Evaluate(self):
+
+		sim = PYROSIM(playPaused=False)
+
+		arena = ARENA(sim)
 
 		xPosition = random.random()*(c.endX-c.startX) + c.startX
 
@@ -26,11 +32,9 @@ class INDIVIDUAL:
 
 		randomTheta = 3.0*math.pi/2.0 # random.random()*2.0*math.pi
 
-		self.robot = ROBOT(self.sim, x = xPosition , y = yPosition , theta = randomTheta) 
+		robot = ROBOT(sim, self.genome, x = xPosition , y = yPosition , theta = randomTheta)
 
-		self.sim.Start()
+		sim.Start()
 
-		self.sim.Wait_To_Finish()
-
-		print self.sim.dataFromPython[0,:,0]
+		sim.Wait_To_Finish()
 

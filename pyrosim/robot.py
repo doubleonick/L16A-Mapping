@@ -4,9 +4,9 @@ import math
 
 class ROBOT:
 
-        def __init__(self,sim,x,y,theta):
+        def __init__(self,sim,genome,x,y,theta):
 
-		self.Create_Robot(sim,x,y,theta)
+		self.Create_Robot(sim,genome,x,y,theta)
 
 	def Create_Joints(self,sim,x,y,theta):
 
@@ -80,7 +80,7 @@ class ROBOT:
         	sim.Send_Cylinder(objectID=currentID,x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf,length=0.0, radius = c.wheelRadius*c.sf, r=1, g=0, b=0)
         	currentID = currentID + 1
 
-        def Create_Robot(self,sim,x,y,theta):
+        def Create_Robot(self,sim,genome,x,y,theta):
 
                 self.Create_Objects(sim,x,y,theta)
 
@@ -90,16 +90,16 @@ class ROBOT:
 
 		self.Create_Neurons(sim)
 
-		self.Create_Synapses(sim)
+		self.Create_Synapses(sim,genome)
 
 	def Create_Sensors(self,sim):
 
 		sim.Send_Position_Sensor(sensorID = 0 , objectID = 4 )
 
-	def Create_Synapses(self,sim):
+	def Create_Synapses(self,sim,genome):
 
 		for s in range(0,16):
 
 			for m in range(0,2):
 
-				sim.Send_Synapse(sourceNeuronID = s , targetNeuronID = 16 + m , weight = random.random()*2-1 )
+				sim.Send_Synapse(sourceNeuronID = s , targetNeuronID = 16 + m , weight = genome[s,m] )
