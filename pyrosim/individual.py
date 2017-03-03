@@ -30,19 +30,13 @@ class INDIVIDUAL:
 
 		self.fitness = totalLight
 	
-	def Evaluate(self):
+	def Evaluate(self,initialX,initialY,initialTheta):
 
 		sim = PYROSIM(playPaused=False)
 
 		arena = ARENA(sim)
 
-		xPosition = random.random()*(c.endX-c.startX) + c.startX
-
-                yPosition = random.random()*(c.endY-c.startY) + c.startY
-
-		randomTheta = random.random()*2.0*math.pi
-
-		robot = ROBOT(sim, self.genome, x = xPosition , y = yPosition , theta = randomTheta)
+		robot = ROBOT(sim, self.genome, x = initialX , y = initialY , theta = initialTheta)
 
 		sim.Start()
 

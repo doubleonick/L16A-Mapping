@@ -1,6 +1,12 @@
+# -------- Evolutionary parameters
+
+numGenerations = 5
+
 evaluationTime = 100
 
-sf = 0.05 # 0.01
+# ------- Arena parameters
+
+sf = 0.05
 
 wallWidth = 10
 
