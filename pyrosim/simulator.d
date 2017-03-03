@@ -152,7 +152,7 @@ simulator.o: simulator.cpp \
   ode-0.12/include/drawstuff/version.h texturepath.h environment.h \
   joint.h object.h raySensor.h lightSensor.h positionSensor.h \
   touchSensor.h vestibularSensor.h proprioceptiveSensor.h neuron.h \
-  neuralNetwork.h synapse.h
+  neuralNetwork.h synapse.h sensorData.h
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iostream:
 
@@ -613,3 +613,5 @@ neuron.h:
 neuralNetwork.h:
 
 synapse.h:
+
+sensorData.h:

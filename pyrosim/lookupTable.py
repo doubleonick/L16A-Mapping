@@ -31,6 +31,11 @@ for line in f.readlines():
 
 f.close()
 
-print lookupTable[ 0 , 0 , 0 , : ]
+for x in range(0,13):
 
-print lookupTable[ 12 , 7 , 15 , :]
+	for y in range(0,8):
+
+		for o in range(0,16):
+
+			print lookupTable[x,y,o,:]
+

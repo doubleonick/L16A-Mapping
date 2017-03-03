@@ -3,6 +3,7 @@
 #include <drawstuff/drawstuff.h>
 #include "texturepath.h"
 #include "environment.h"
+#include "sensorData.h"
 
 #ifdef _MSC_VER
 #pragma warning(disable:4244 4305)  // for VC++, no precision loss complaints
@@ -273,6 +274,12 @@ void Run_Blind(void) {
 
 int main (int argc, char **argv)
 {
+
+	/*
+	for (int i = 0 ; i < 2 ; i++)
+
+		std::cerr << sensorData[i] << "\n";
+	*/
 
 	runBlind = false; 
 
