@@ -20,5 +20,7 @@ int	MAX_SYNAPSES	= 1000000;
 int	BOX		= 0;
 int	CYLINDER	= 1;
 
+double  SF		= 0.05;
+
 #endif
 

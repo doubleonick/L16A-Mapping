@@ -26,6 +26,8 @@ JOINT::JOINT(void) {
 
 	positionControl = true;
 
+	ballAndSocket = false;
+
         joint = NULL;
 
         proprioceptiveSensor = NULL;
@@ -44,6 +46,14 @@ void JOINT::Actuate(void) {
 		return;
 
 	double motorNeuronValue = motorNeuron->Get_Value();
+
+	if ( (firstObject==4) && (secondObject==6) ) // Right wheel
+
+		motorNeuronValue = -1.0;
+
+        if ( (firstObject==4) && (secondObject==8) ) // Left wheel
+
+                motorNeuronValue = +1.0;
 
 	double zeroToOne = motorNeuronValue/2.0 + 0.5;
 
@@ -97,8 +107,12 @@ void JOINT::Create_In_Simulator(dWorldID world, OBJECT *firstObject, OBJECT *sec
 	if ( Is_Fixed_Joint(firstObject,secondObject) )
 
 		Create_Fixed_Joint_In_Simulator(world,firstObject,secondObject);
-	else
+
+	else if ( Is_Hinge_Joint() )
+
 		Create_Hinge_Joint_In_Simulator(world,firstObject,secondObject);
+	else
+		Create_BallAndSocket_Joint_In_Simulator(world,firstObject,secondObject);
 }
 
 void JOINT::Create_Proprioceptive_Sensor(int myID, int evalPeriod) {
@@ -158,6 +172,15 @@ void JOINT::Read_From_Python(void) {
 		positionControl = true;
 	else
 		positionControl = false;
+
+        std::cin >> temp;
+
+        if ( strcmp(temp,"True")==0 )
+
+                ballAndSocket = true;
+        else
+                ballAndSocket = false;
+
 }
 
 void JOINT::Update_Sensor_Neurons(int t) {
@@ -175,6 +198,15 @@ void JOINT::Write_To_Python(int evalPeriod) {
 }
 
 // ------------------- Private methods --------------------------
+
+void JOINT::Create_BallAndSocket_Joint_In_Simulator(dWorldID world, OBJECT *firstObject, OBJECT *secondObject) {
+
+        joint = dJointCreateBall(world,0);
+
+        dJointAttach( joint , firstObject->Get_Body() , secondObject->Get_Body() );
+
+	dJointSetBallAnchor(joint,x,y,z);
+}
 
 void JOINT::Create_Fixed_Joint_In_Simulator(dWorldID world, OBJECT *firstObject, OBJECT *secondObject) {
 
@@ -212,6 +244,11 @@ void JOINT::Create_Hinge_Joint_In_Simulator(dWorldID world, OBJECT *firstObject,
 int  JOINT::Is_Fixed_Joint(OBJECT *firstObject, OBJECT *secondObject) {
 
         return ( (firstObject==NULL) || (secondObject==NULL) );
+}
+
+int  JOINT::Is_Hinge_Joint(void) {
+
+        return ( ballAndSocket == false );
 }
 
 #endif

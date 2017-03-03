@@ -147,7 +147,7 @@ positionSensor.o: positionSensor.cpp \
   ode-0.12/include/ode/collision.h \
   ode-0.12/include/ode/collision_trimesh.h \
   ode-0.12/include/ode/odecpp_collision.h \
-  ode-0.12/include/ode/export-dif.h neuron.h
+  ode-0.12/include/ode/export-dif.h neuron.h sensorData.h
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iostream:
 
@@ -582,3 +582,5 @@ ode-0.12/include/ode/odecpp_collision.h:
 ode-0.12/include/ode/export-dif.h:
 
 neuron.h:
+
+sensorData.h:

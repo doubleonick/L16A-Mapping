@@ -4,6 +4,7 @@
 #include "iostream"
 #include "positionSensor.h"
 #include "neuron.h"
+#include "sensorData.h"
 
 POSITION_SENSOR::POSITION_SENSOR(int myID, int evalPeriod) {
 
@@ -11,9 +12,9 @@ POSITION_SENSOR::POSITION_SENSOR(int myID, int evalPeriod) {
 
 	vals = new double[16*evalPeriod];
 
-	mySensorNeurons = new NEURON*[16];
+	mySensorNeurons = new NEURON*[19];
 
-	for ( int i = 0 ; i < 16 ; i++)
+	for ( int i = 0 ; i < 19 ; i++)
 
         	mySensorNeurons[i] = NULL;
 }
@@ -34,6 +35,21 @@ int  POSITION_SENSOR::Get_ID(void) {
 
 void POSITION_SENSOR::Poll(dBodyID body, int t, double x, double y, double theta) {
 
+	std::cerr << x << " ";
+        std::cerr << y << " ";
+        std::cerr << theta << "   ";
+
+        int xIndex = int(x * (ticksX-1) / endX);
+
+        int yIndex = int(y * (ticksY-1) / endY);
+
+        int thetaIndex = int(theta * (ticksTheta-1) / endTheta);
+
+        std::cerr << xIndex << " ";
+        std::cerr << yIndex << " ";
+        std::cerr << thetaIndex << "   ";
+
+
 	/*
 	for (int i = 0 ; i < 16 ; i++ )
 
@@ -46,20 +62,26 @@ void POSITION_SENSOR::Poll(dBodyID body, int t, double x, double y, double theta
 
 	vals[16*t + 2] = theta;
 
-        for (int i = 3 ; i < 16 ; i++ )
+        for (int j = 3 ; j < 19 ; j++ ) {
                 
-                vals[16*t + i] = 0.0;
+                vals[19*t + j] = sensorData[ xIndex*(8*16*19) + yIndex*(16*19) + thetaIndex*19 + j ]; 
+
+		std::cerr << vals[19*t + j] << " ";
+	}
+	std::cerr << "\n";
 }
 
 void POSITION_SENSOR::Update_Sensor_Neurons(int t) {
 
-	for (int i = 0 ; i < 16 ; i++ )
+	for (int j = 0 ; j < 19 ; j++ )
 
-		if ( mySensorNeurons[i] ) 
+		if ( mySensorNeurons[j] ) 
 
-			// mySensorNeurons[i]->Set( vals[16*t + i] );
+			mySensorNeurons[j]->Set( vals[19*t + j] );
 
-			mySensorNeurons[i]->Set( ((double) rand() / (RAND_MAX))*2.0 - 1.0 );
+			//mySensorNeurons[i]->Set( ((double) rand() / (RAND_MAX))*2.0 - 1.0 );
+
+			// mySensorNeurons[i]->Set( 1.0 );
 }
 
 void POSITION_SENSOR::Write_To_Python(int evalPeriod) {

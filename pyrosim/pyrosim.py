@@ -28,9 +28,9 @@ class PYROSIM:
 
 			commandsToSend.append('-pause')
 
-		self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE, stderr=PIPE)
+		# self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
-		# self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE)
+		self.simulator = Popen(commandsToSend, stdout=PIPE, stdin=PIPE)
 
 		self.Send('EvaluationTime '+str(evalTime)+'\n')
 
@@ -107,7 +107,7 @@ class PYROSIM:
 
 		self.Send(outputString)
 
-	def Send_Joint(self, jointID=0, firstObjectID=0, secondObjectID=1, x=0, y=0, z=0, n1=0, n2=0, n3=1, lo=-math.pi/4.0, hi=+math.pi/4.0 , speed=1.0, positionControl = True):
+	def Send_Joint(self, jointID=0, firstObjectID=0, secondObjectID=1, x=0, y=0, z=0, n1=0, n2=0, n3=1, lo=-math.pi/4.0, hi=+math.pi/4.0 , speed=1.0, positionControl = True, ballAndSocket = False):
 
 		outputString = 'Joint'
 
@@ -130,6 +130,8 @@ class PYROSIM:
 		outputString = outputString + ' ' + str(speed)
 
 		outputString = outputString + ' ' + str(positionControl)
+
+		outputString = outputString + ' ' + str(ballAndSocket)
 
 		outputString = outputString + '\n'
 

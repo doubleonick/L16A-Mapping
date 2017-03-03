@@ -117,9 +117,9 @@ void ENVIRONMENT::Read_From_Python(dWorldID world,dSpaceID space, int *evaluatio
 
 double ENVIRONMENT::Get_Robot_Orientation(void) {
 
-	const dReal *rightWheelPos = dBodyGetPosition(objects[7]->body);
+	const dReal *rightWheelPos = dBodyGetPosition(objects[6]->body);
 
-        const dReal *leftWheelPos = dBodyGetPosition(objects[10]->body);
+        const dReal *leftWheelPos = dBodyGetPosition(objects[8]->body);
 
 	double y[3];
 	y[0] = rightWheelPos[0] - leftWheelPos[0];
@@ -135,8 +135,11 @@ double ENVIRONMENT::Get_Robot_Orientation(void) {
 
 	double theta = atan2(det,dot);
 
-	return 2.0*3.14159 - (theta + 3.14159/2.0);
+	theta = 2.0*3.14159 - (theta + 3.14159/2.0);
 
+	theta = (theta * 180.0) / 3.14159;
+
+	return theta;
 }
 
 void ENVIRONMENT::Poll_Sensors(int t) {

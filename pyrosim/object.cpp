@@ -179,8 +179,8 @@ void OBJECT::Poll_Sensors(int numObjects, OBJECT **objects, int t, double theta)
 
 		const dReal *myPos = dBodyGetPosition(body);
 
-		double x = myPos[0];
-		double y = myPos[1];
+		double x = myPos[0] / SF;
+		double y = myPos[1] / SF;
 
                 positionSensor->Poll(body,t,x,y,theta);
 	}
