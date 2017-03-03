@@ -117,9 +117,9 @@ void ENVIRONMENT::Read_From_Python(dWorldID world,dSpaceID space, int *evaluatio
 
 double ENVIRONMENT::Get_Robot_Orientation(void) {
 
-	const dReal *rightWheelPos = dBodyGetPosition(objects[6]->body);
+	const dReal *rightWheelPos = dBodyGetPosition(objects[2]->body);
 
-        const dReal *leftWheelPos = dBodyGetPosition(objects[8]->body);
+        const dReal *leftWheelPos = dBodyGetPosition(objects[4]->body);
 
 	double y[3];
 	y[0] = rightWheelPos[0] - leftWheelPos[0];

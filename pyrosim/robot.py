@@ -15,28 +15,22 @@ class ROBOT:
                 objY = y + (c.bodyRadius-c.wheelRadius) * math.cos(theta + math.pi/2)
 		firstN1 = math.sin(theta)
 		firstN2 = math.cos(theta)
-		sim.Send_Joint(jointID=0, firstObjectID=4, secondObjectID=5, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, positionControl = False, ballAndSocket=True)
+		sim.Send_Joint(jointID=0, firstObjectID=0, secondObjectID=1, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, positionControl = False, ballAndSocket=True)
 
 		# Right joint
                 objX = x + (c.bodyRadius-c.wheelRadius) * math.sin(theta + math.pi/2 + math.pi/2)
                 objY = y + (c.bodyRadius-c.wheelRadius) * math.cos(theta + math.pi/2 + math.pi/2)
-                sim.Send_Joint(jointID=1, firstObjectID=4, secondObjectID=6, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, lo=-c.speed, hi=+c.speed, positionControl = False)
+                sim.Send_Joint(jointID=1, firstObjectID=0, secondObjectID=2, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, lo=-c.speed, hi=+c.speed, positionControl = False)
 
 		# Back joint
                 objX = x + (c.bodyRadius-c.wheelRadius) * math.sin(theta + math.pi/2 + math.pi)
                 objY = y + (c.bodyRadius-c.wheelRadius) * math.cos(theta + math.pi/2 + math.pi)
-                sim.Send_Joint(jointID=2, firstObjectID=4, secondObjectID=7, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, positionControl = False, ballAndSocket=True)
+                sim.Send_Joint(jointID=2, firstObjectID=0, secondObjectID=3, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, positionControl = False, ballAndSocket=True)
 
 		# Left joint
                 objX = x + (c.bodyRadius-c.wheelRadius) * math.sin(theta + math.pi/2 + 3*math.pi/2)
                 objY = y + (c.bodyRadius-c.wheelRadius) * math.cos(theta + math.pi/2 + 3*math.pi/2)
-                sim.Send_Joint(jointID=3, firstObjectID=4, secondObjectID=8, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, lo=-c.speed, hi=+c.speed, positionControl = False)
-
-		# Make the arena walls immovable. 
-
-		for w in range(0,4):
-
-			sim.Send_Joint(jointID=4+w, firstObjectID=w, secondObjectID=-1)
+                sim.Send_Joint(jointID=3, firstObjectID=0, secondObjectID=4, x=objX*c.sf,y=objY*c.sf,z=c.wheelRadius*c.sf, n1=firstN1, n2=firstN2, n3=0, lo=-c.speed, hi=+c.speed, positionControl = False)
 
 	def Create_Neurons(self,sim):
 
@@ -50,7 +44,7 @@ class ROBOT:
 	
 	def Create_Objects(self,sim,x,y,theta):
 
-        	currentID = 4
+        	currentID = 0
 
         	# Main body
         	sim.Send_Cylinder(objectID=currentID,x=x*c.sf,y=y*c.sf,z=c.bodyRadius*c.sf+0.01,length=0.0, radius = c.bodyRadius*c.sf)
@@ -94,7 +88,7 @@ class ROBOT:
 
 	def Create_Sensors(self,sim):
 
-		sim.Send_Position_Sensor(sensorID = 0 , objectID = 4 )
+		sim.Send_Position_Sensor(sensorID = 0 , objectID = 0 )
 
 	def Create_Synapses(self,sim,genome):
 

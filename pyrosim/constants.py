@@ -2,9 +2,11 @@
 
 numGenerations = 5
 
-evaluationTime = 100
+evaluationTime = 1000
 
 # ------- robot parameters
+
+numBodyParts = 5
 
 bodyRadius = 17.0
 

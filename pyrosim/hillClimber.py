@@ -1,4 +1,4 @@
-import copy, math
+import math
 
 import constants as c
 
@@ -14,25 +14,23 @@ class HILLCLIMBER:
 
                 self.initialTheta = self.Fraction_Of_Theta(0.5)
 
+		self.playBlind = True
+
+        def Child_Competes_Against_Parent(self):
+
+                if ( self.child.fitness > self.parent.fitness ):
+
+                        self.parent = self.child
+
 	def Evolve(self):
 
-                parent = INDIVIDUAL()
+                self.parent = INDIVIDUAL()
 
-		parent.Evaluate(self.initialX,self.initialY,self.initialTheta,pb=True)
+		self.parent.Evaluate(self.initialX,self.initialY,self.initialTheta,self.playBlind)
 
-		for currentGeneration in range(0,c.numGenerations):
+		for self.currentGeneration in range(0,c.numGenerations):
 
-			child = copy.deepcopy(parent)
-
-			child.Mutate()
-
-			child.Evaluate(self.initialX,self.initialY,self.initialTheta,pb=True)
-
-			self.Print(parent,child)
-
-			if ( child.fitness > parent.fitness ):
-
-				parent = child
+			self.Perform_One_Generation()
 
 	def Fraction_Of_X(self,fraction):
 
@@ -46,8 +44,24 @@ class HILLCLIMBER:
 
         	return fraction*2.0*math.pi
 
-	def Print(self,parent,child):
+        def Perform_One_Generation(self):
 
-		print parent.fitness,
+		self.child = self.parent.Spawn_Mutant()
 
-		print child.fitness
+                self.child.Evaluate(self.initialX,self.initialY,self.initialTheta,self.playBlind)
+
+                self.Print()
+
+		self.Child_Competes_Against_Parent()
+
+	def Print(self):
+
+		print 'Generation ' + str(self.currentGeneration) + ' of ' + str(c.numGenerations) + '. ',
+
+		print 'Parent fitness: ' + str(self.parent.fitness),
+
+		print 'Child fitness: ' + str(self.child.fitness)
+
+	def Show_Best(self):
+
+		self.parent.Evaluate(self.initialX,self.initialY,self.initialTheta,pb=False)	

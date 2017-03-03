@@ -8,9 +8,7 @@ import constants as c
 
 import numpy as np
 
-import random
-
-import math
+import random, copy, math
 
 class INDIVIDUAL:
 
@@ -24,9 +22,11 @@ class INDIVIDUAL:
 
 		totalLight = 0.0
 
-		for i in range(3,19,2):
+		for i in range(4,19,2):
 
-			totalLight = totalLight + sim.dataFromPython[0,i,-1]
+			meanOfCurrentLightSensor = np.mean( sim.dataFromPython[0,i,:] )
+
+			totalLight = totalLight + meanOfCurrentLightSensor
 
 		self.fitness = totalLight
 	
@@ -34,9 +34,9 @@ class INDIVIDUAL:
 
 		sim = PYROSIM(playBlind=pb)
 
-		arena = ARENA(sim)
-
 		robot = ROBOT(sim, self.genome, x = initialX , y = initialY , theta = initialTheta)
+
+		arena = ARENA(sim)
 
 		sim.Start()
 
@@ -50,4 +50,16 @@ class INDIVIDUAL:
 
 		j = np.random.randint(0,c.numMotors)
 
-		self.genome[i,j] = self.genome[i,j]
+		mean = self.genome[i,j]
+
+		std  = math.fabs( self.genome[i,j] )
+ 
+		self.genome[i,j] = np.random.normal( mean , std ) 
+
+	def Spawn_Mutant(self):
+
+                mutant = copy.deepcopy(self)
+
+                mutant.Mutate()
+
+		return mutant
