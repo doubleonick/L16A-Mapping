@@ -47,14 +47,6 @@ void JOINT::Actuate(void) {
 
 	double motorNeuronValue = motorNeuron->Get_Value();
 
-	if ( (firstObject==4) && (secondObject==6) ) // Right wheel
-
-		motorNeuronValue = -1.0;
-
-        if ( (firstObject==4) && (secondObject==8) ) // Left wheel
-
-                motorNeuronValue = +1.0;
-
 	double zeroToOne = motorNeuronValue/2.0 + 0.5;
 
 	double diff;

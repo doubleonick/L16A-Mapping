@@ -22,15 +22,15 @@ class ARENA:
 
 	def Create_Back_Wall(self,sim):
 
-        	sim.Send_Box(objectID=0, x=c.maxX*c.sf/2, y=0, z=c.wallWidth*c.sf, length=c.maxX*c.sf, width=c.wallWidth*c.sf, height=c.wallWidth*c.sf*2)
+        	sim.Send_Box(objectID=0, x=c.maxX*c.sf/2, y=0, z=c.wallWidth*c.sf, length=c.maxX*c.sf, width=c.wallWidth*c.sf, height=c.wallWidth*c.sf*3)
 
 	def Create_Front_Wall(self,sim):
 
-        	sim.Send_Box(objectID=1, x=c.maxX*c.sf/2, y=c.maxY*c.sf, z=c.wallWidth*c.sf, length=c.maxX*c.sf, width=c.wallWidth*c.sf, height=c.wallWidth*c.sf*2)
+        	sim.Send_Box(objectID=1, x=c.maxX*c.sf/2, y=c.maxY*c.sf, z=c.wallWidth*c.sf, length=c.maxX*c.sf, width=c.wallWidth*c.sf, height=c.wallWidth*c.sf*3)
 
 	def Create_Left_Wall(self,sim):
 
-        	sim.Send_Box(objectID=2, x=0, y=c.maxY*c.sf/2, z=c.wallWidth*c.sf, length=c.wallWidth*c.sf, width=c.maxY*c.sf, height=c.wallWidth*c.sf*2)
+        	sim.Send_Box(objectID=2, x=0, y=c.maxY*c.sf/2, z=c.wallWidth*c.sf, length=c.wallWidth*c.sf, width=c.maxY*c.sf, height=c.wallWidth*c.sf*3)
 
 	def Create_Position_Markers(self,sim):
 
@@ -46,4 +46,4 @@ class ARENA:
 
         def Create_Right_Wall(self,sim):
 
-                sim.Send_Box(objectID=3, x=c.maxX*c.sf, y=c.maxY*c.sf/2, z=c.wallWidth*c.sf, length=c.wallWidth*c.sf, width=c.maxY*c.sf, height=c.wallWidth*c.sf*2)
+                sim.Send_Box(objectID=3, x=c.maxX*c.sf, y=c.maxY*c.sf/2, z=c.wallWidth*c.sf, length=c.wallWidth*c.sf, width=c.maxY*c.sf, height=c.wallWidth*c.sf*3)
