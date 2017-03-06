@@ -12,6 +12,8 @@ class HILLCLIMBER:
 
 		self.Create_Trials()
 
+		self.playPaused = False
+
 		self.playBlind = True
 
         def Child_Competes_Against_Parent(self):
@@ -40,7 +42,7 @@ class HILLCLIMBER:
 
                 self.parent = INDIVIDUAL()
 
-		self.parent.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,self.playBlind)
+		self.parent.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,self.playPaused,self.playBlind)
 
 		for self.currentGeneration in range(0,c.numGenerations):
 
@@ -62,7 +64,7 @@ class HILLCLIMBER:
 
 		self.child = self.parent.Spawn_Mutant()
 
-                self.child.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,self.playBlind)
+                self.child.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,self.playPaused,self.playBlind)
 
                 self.Print()
 
@@ -78,4 +80,4 @@ class HILLCLIMBER:
 
 	def Show_Best(self):
 
-		self.parent.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,pb=False)	
+		self.parent.Evaluate_Multiple_Times(self.initialXs,self.initialYs,self.initialThetas,pp=True,pb=False)	

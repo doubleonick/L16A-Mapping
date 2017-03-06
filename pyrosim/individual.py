@@ -46,13 +46,13 @@ class INDIVIDUAL:
 
 		del self.sims
 
-	def Evaluate_Multiple_Times(self,initialXs,initialYs,initialThetas,pb):
+	def Evaluate_Multiple_Times(self,initialXs,initialYs,initialThetas,pp,pb):
 
 		self.sims = {}
 
 		for t in range(0,c.numTrials):
 
-			self.Start_Evaluation(t,initialXs[t],initialYs[t],initialThetas[t],pb)
+			self.Start_Evaluation(t,initialXs[t],initialYs[t],initialThetas[t],pp,pb)
 
                 for t in range(0,c.numTrials):
 
@@ -86,9 +86,9 @@ class INDIVIDUAL:
 
 		return mutant
 
-        def Start_Evaluation(self,trialIndex,initialX,initialY,initialTheta,pb):
+        def Start_Evaluation(self,trialIndex,initialX,initialY,initialTheta,pp,pb):
 
-                self.sims[trialIndex] = PYROSIM(playBlind=pb)
+                self.sims[trialIndex] = PYROSIM(playPaused=pp,playBlind=pb)
 
                 self.robot = ROBOT(self.sims[trialIndex], self.genome, x = initialX , y = initialY , theta = initialTheta)
 

@@ -11,6 +11,10 @@ All data and documentation associated with mapping the Landro arena with L16A.
 
 ```python Landro.py```
 
+4. To evolve phototaxis in the robot, type ```python evolve.py```. When evolution finishes, the best robot will be played back in
+10 different environments. To see how it behaves in each of these environments, click on the graphics window and press Ctrl-P to
+unpause the simulation. When that simulation finishes, click on the next window, press Ctrl-P, and so on.
+
 ## Physical robot notes.
 Landro has a ring of 16 sensors, alternating between infrared proximity sensors (IR), and light dependent resistors (LDR) that give information about ambient light intensity.  The sensors at 0 degrees, 90, 180 and 270 degrees with respect to the Landro's forward heading are IR sensors.  Every 22.5 degrees away from an IR is an LDR; IRs are spaced at 45 degrees from one another, and LDRs are spaced 45 degrees from one another.
 

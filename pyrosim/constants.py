@@ -1,10 +1,10 @@
 # -------- Evolutionary parameters
 
-numGenerations = 5
+numGenerations = 1000
 
-numTrials = 2 
+numTrials = 10
 
-evaluationTime = 100
+evaluationTime = 500
 
 # ------- robot parameters
 
