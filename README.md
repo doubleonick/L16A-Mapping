@@ -7,9 +7,7 @@ All data and documentation associated with mapping the Landro arena with L16A.
 
 2. A video of the robot in operation is here: https://youtu.be/bHH6b9otKl4 
 
-3. To run the simulation: If on a Mac, navigate into the pyrosim directory. Then, type
-
-```python Landro.py```
+3. To run the simulation: If on a Mac, navigate into the pyrosim directory. Then, type ```python Landro.py```
 
 4. To evolve phototaxis in the robot, type ```python evolve.py```. When evolution finishes, the best robot will be played back in
 10 different environments. To see how it behaves in each of these environments, click on the graphics window and press Ctrl-P to
