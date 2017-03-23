@@ -36,11 +36,11 @@ class INDIVIDUAL:
 
                 self.Compute_Fitness(self.sims[trialIndex])
 
-	def Evaluate(self,initialX,initialY,initialTheta,pb):
+	def Evaluate(self,initialX,initialY,initialTheta,pp,pb):
 
 		self.sims = {}
 
-		self.Start_Evaluation(0,initialX,initialY,initialTheta,pb)
+		self.Start_Evaluation(0,initialX,initialY,initialTheta,pp,pb)
 
 		self.End_Evaluation(0)
 

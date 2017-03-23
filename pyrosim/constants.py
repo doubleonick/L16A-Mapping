@@ -1,6 +1,6 @@
 # -------- Evolutionary parameters
 
-numGenerations = 1000
+numGenerations = 100
 
 numTrials = 10
 
